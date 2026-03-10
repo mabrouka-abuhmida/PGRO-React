@@ -1,0 +1,2 @@
+export { ApplicantAllocations } from './ApplicantAllocations';
+

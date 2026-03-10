@@ -1,0 +1,21 @@
+.allocations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.allocations-virtualized-container {
+  width: 100%;
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.allocations-loading,
+.allocations-empty {
+  text-align: center;
+  padding: 4rem 0;
+  font-size: 1.125rem;
+  color: #666;
+}
+

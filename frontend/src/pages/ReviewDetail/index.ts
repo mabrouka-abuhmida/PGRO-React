@@ -1,0 +1,2 @@
+export { ReviewDetail } from './ReviewDetail';
+

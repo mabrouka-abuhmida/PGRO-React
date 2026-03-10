@@ -1,0 +1,37 @@
+.applicant-info-card {
+  padding: 2rem;
+}
+
+.summary-field {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.summary-field:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.summary-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.summary-value {
+  margin: 0;
+  line-height: 1.6;
+  color: #111111;
+}
+
+.quality-rationale {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #D9D9D9;
+}
+

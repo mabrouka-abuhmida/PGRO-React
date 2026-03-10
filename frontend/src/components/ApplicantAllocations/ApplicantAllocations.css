@@ -1,0 +1,14 @@
+.staff-reviews-card {
+  padding: 2rem;
+}
+
+.staff-review-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.review-content {
+  line-height: 1.6;
+}
+

@@ -1,0 +1,839 @@
+.staff-review {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #D9D9D9;
+  gap: 2rem;
+}
+
+.review-header-left {
+  flex: 1;
+}
+
+.review-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 300px;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #111111;
+  margin: 0 0 1rem 0;
+}
+
+.applicant-info h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 0.25rem 0;
+}
+
+.applicant-info p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+.quality-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0;
+  align-items: flex-end;
+}
+
+.quality-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.metric-header strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.review-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.application-panel,
+.review-form-panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  padding: 1.5rem;
+  background: #F5F5F5;
+  border-bottom: 1px solid #D9D9D9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.submitted-badge {
+  padding: 0.25rem 0.75rem;
+  background: #006B3F;
+  color: white;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.application-content {
+  padding: 1.5rem;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Prevent outer containers from creating scrollbars */
+.application-text-container,
+.proposal-text-container,
+.raw-text-wrapper {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.application-text {
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #111111;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: visible !important;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  max-height: none !important;
+}
+
+.ai-review-section {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid #D9D9D9;
+  background: #F9F9F9;
+}
+
+.ai-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ai-review-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.btn-generate-ai {
+  padding: 0.5rem 1rem;
+  background: #006B3F;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-generate-ai:hover:not(:disabled) {
+  background: #005030;
+}
+
+.btn-generate-ai:disabled {
+  background: #D9D9D9;
+  cursor: not-allowed;
+}
+
+.ai-review-content {
+  background: white;
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
+  padding: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  display: block;
+}
+
+.ai-review-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ai-review-content::-webkit-scrollbar-track {
+  background: #F5F5F5;
+  border-radius: 4px;
+}
+
+.ai-review-content::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+  border-radius: 4px;
+}
+
+.ai-review-content::-webkit-scrollbar-thumb:hover {
+  background: #C0C0C0;
+}
+
+.ai-review-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: #FFB81C;
+  color: #111111;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.ai-review-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #111111;
+  word-wrap: break-word;
+  margin-bottom: 0.75rem;
+}
+
+.ai-review-text p {
+  margin: 0 0 1rem 0;
+}
+
+.ai-review-text p:last-child {
+  margin-bottom: 0;
+}
+
+.ai-review-timestamp {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #E5E5E5;
+  font-style: italic;
+}
+
+.ai-review-placeholder {
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  background: white;
+  border: 1px dashed #D9D9D9;
+  border-radius: 6px;
+}
+
+.review-form {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  max-height: 550px; /* Slightly smaller than proposal panel to allow scrolling */
+}
+
+.form-section {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+  margin-bottom: 0.5rem;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #BE1E2D;
+}
+
+.form-input:disabled,
+.form-textarea:disabled {
+  background: #F5F5F5;
+  cursor: not-allowed;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Form Header Section */
+.form-header-section {
+  background: #F5F5F5;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.form-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.form-subsection-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 1rem 0 0.75rem 0;
+}
+
+.form-note {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.25rem 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Yes/No Questions */
+.yes-no-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.yes-no-question {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #F9F9F9;
+  border-radius: 6px;
+  border: 1px solid #E0E0E0;
+}
+
+.yes-no-label {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #111111;
+  font-weight: 500;
+  margin: 0;
+}
+
+.yes-no-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.yes-no-btn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #D9D9D9;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  color: #111111;
+  min-width: 80px;
+}
+
+.yes-no-btn:hover:not(:disabled) {
+  border-color: #BE1E2D;
+  background: #F5F5F5;
+}
+
+.yes-no-btn.active {
+  background: #006B3F;
+  color: white;
+  border-color: #006B3F;
+}
+
+.yes-no-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.conditional-question {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #FFF9E6;
+  border-left: 4px solid #FFB81C;
+  border-radius: 4px;
+}
+
+.risk-assessment-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #FFF5F5;
+  border-left: 4px solid #BE1E2D;
+  border-radius: 4px;
+}
+
+/* Recommendation Buttons */
+.recommendation-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.recommendation-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #D9D9D9;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  color: #111111;
+  text-align: left;
+}
+
+.recommendation-btn:hover:not(:disabled) {
+  border-color: #BE1E2D;
+  background: #F5F5F5;
+}
+
+.recommendation-btn.active {
+  background: #BE1E2D;
+  color: white;
+  border-color: #BE1E2D;
+}
+
+.recommendation-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #D9D9D9;
+}
+
+.btn-save,
+.btn-submit {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-save {
+  background: #D9D9D9;
+  color: #111111;
+}
+
+.btn-save:hover:not(:disabled) {
+  background: #C0C0C0;
+}
+
+.btn-submit {
+  background: #006B3F;
+  color: white;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #005030;
+}
+
+.btn-save:disabled,
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Modal styles for document viewer */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 90vw;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-large {
+  width: 90%;
+  max-width: 1000px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #D9D9D9;
+  flex-shrink: 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: #111111;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 1200px) {
+  .review-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .application-content {
+    max-height: 400px;
+  }
+  
+  .review-form {
+    max-height: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .staff-review {
+    max-width: 100%;
+  }
+  
+  .review-header {
+    page-break-after: avoid;
+  }
+  
+  /* Hide application panel (application text and AI review) when printing */
+  .application-panel {
+    display: none !important;
+  }
+  
+  .review-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .review-form-panel {
+    box-shadow: none;
+    page-break-inside: avoid;
+    width: 100%;
+  }
+  
+  .review-form {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  .form-section {
+    page-break-inside: avoid;
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .form-group {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .form-row {
+    display: grid !important;
+    visibility: visible !important;
+  }
+  
+  /* Ensure form inputs display their values */
+  .form-input:disabled,
+  .form-textarea:disabled {
+    background: white !important;
+    border: 1px solid #333 !important;
+    padding: 0.25rem 0.5rem !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #000 !important;
+  }
+  
+  .form-input,
+  .form-textarea {
+    border: 1px solid #333 !important;
+    padding: 0.25rem 0.5rem !important;
+    background: white !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #000 !important;
+  }
+  
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: transparent !important;
+  }
+  
+  /* Force input values to be visible */
+  .form-input[value],
+  .form-input[value]:disabled {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+  }
+  
+  /* Ensure textarea content is visible */
+  .form-textarea {
+    white-space: pre-wrap !important;
+    overflow: visible !important;
+  }
+  
+  .form-label {
+    font-weight: 700;
+  }
+  
+  /* Ensure yes/no questions are visible */
+  .yes-no-question {
+    display: flex !important;
+    visibility: visible !important;
+    page-break-inside: avoid;
+  }
+  
+  .yes-no-label {
+    color: #000 !important;
+  }
+  
+  /* Show yes/no button states */
+  .yes-no-btn,
+  .recommendation-btn {
+    border: 1px solid #333 !important;
+    padding: 0.25rem 0.75rem !important;
+    background: white !important;
+    color: #000 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    opacity: 1 !important;
+  }
+  
+  .yes-no-btn.active,
+  .recommendation-btn.active {
+    background: #006B3F !important;
+    color: white !important;
+    border-color: #006B3F !important;
+    font-weight: 700;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Ensure button text is visible */
+  .yes-no-btn,
+  .recommendation-btn {
+    -webkit-text-fill-color: inherit !important;
+  }
+  
+  /* Ensure select elements show their values */
+  .form-select {
+    border: 1px solid #ccc !important;
+    padding: 0.25rem 0.5rem !important;
+    background: white !important;
+    display: block !important;
+    visibility: visible !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Show selected staff display */
+  .staff-select-container > div {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  /* Optimize text sizes and spacing for print */
+  body {
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+  }
+  
+  .staff-review {
+    padding: 0.5rem !important;
+  }
+  
+  .review-header h1 {
+    font-size: 14pt !important;
+  }
+  
+  .review-form-panel {
+    padding: 0.75rem !important;
+  }
+  
+  .form-section {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .form-section h2 {
+    font-size: 11pt !important;
+    margin: 0 0 0.5rem 0 !important;
+    padding-bottom: 0.25rem !important;
+  }
+  
+  .form-group {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .form-label {
+    font-size: 8pt !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .form-input,
+  .form-textarea {
+    font-size: 9pt !important;
+    padding: 0.25rem 0.5rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  .form-textarea {
+    min-height: auto !important;
+  }
+  
+  .yes-no-question {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .yes-no-label {
+    font-size: 8pt !important;
+  }
+  
+  .yes-no-btn,
+  .recommendation-btn {
+    font-size: 8pt !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+  
+  .form-select {
+    font-size: 9pt !important;
+  }
+}
+

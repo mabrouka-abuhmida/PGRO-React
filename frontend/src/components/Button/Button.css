@@ -1,0 +1,277 @@
+/* Base button styles */
+.btn {
+  font-family: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Button sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 20px;
+}
+
+.btn-md {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: 30px;
+}
+
+/* Primary button (USW Red) */
+.btn-primary {
+  background: #BE1E2D;
+  color: #FFFFFF;
+  border-radius: 25px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #9a1825;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(190, 30, 45, 0.3);
+}
+
+/* Secondary button (USW Green) */
+.btn-secondary {
+  background: #006B3F;
+  color: #FFFFFF;
+  border-radius: 25px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #005530;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 107, 63, 0.3);
+}
+
+/* Outline button */
+.btn-outline {
+  background: transparent;
+  color: #BE1E2D;
+  border: 2px solid #BE1E2D;
+  border-radius: 25px;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: #BE1E2D;
+  color: #FFFFFF;
+}
+
+/* Text button */
+.btn-text {
+  background: transparent;
+  color: #BE1E2D;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.btn-text:hover:not(:disabled) {
+  background: #F5F5F5;
+}
+
+/* Speech bubble button */
+.btn-bubble {
+  background: #FFFFFF;
+  color: #BE1E2D;
+  border: 2px solid #BE1E2D;
+  border-radius: 25px;
+  position: relative;
+}
+
+.btn-bubble:hover:not(:disabled) {
+  background: #F5F5F5;
+  box-shadow: 0 4px 8px rgba(190, 30, 45, 0.2);
+}
+
+/* Speech bubble tail */
+.btn-tail {
+  position: relative;
+}
+
+.btn-tail-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #BE1E2D;
+}
+
+.btn-tail-left::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #BE1E2D;
+}
+
+.btn-tail-right::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #BE1E2D;
+}
+
+/* Double outline button */
+.btn-double-outline {
+  background: #FFFFFF;
+  color: #BE1E2D;
+  border: 2px solid #BE1E2D;
+  border-radius: 25px;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #BE1E2D;
+}
+
+.btn-double-outline:hover:not(:disabled) {
+  background: #F5F5F5;
+  box-shadow: 0 0 0 2px #F5F5F5, 0 0 0 4px #BE1E2D;
+}
+
+/* Split button container */
+.btn-split {
+  display: inline-flex;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-split-sm {
+  font-size: 0.875rem;
+}
+
+.btn-split-md {
+  font-size: 1rem;
+}
+
+.btn-split-lg {
+  font-size: 1.125rem;
+}
+
+.btn-split-left {
+  padding: 0.75rem 1.5rem;
+  background: #BE1E2D;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-split-left:hover:not(:disabled) {
+  background: #9a1825;
+}
+
+.btn-split-right {
+  padding: 0.75rem 1.5rem;
+  background: #006B3F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-split-right:hover:not(:disabled) {
+  background: #005530;
+}
+
+.btn-split button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Icon positioning */
+.btn-icon-left,
+.btn-icon-right {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.btn-icon-left {
+  margin-right: 0.25rem;
+}
+
+.btn-icon-right {
+  margin-left: 0.25rem;
+}
+
+/* Separator and icon */
+.btn-separator {
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 0.5rem;
+}
+
+.btn-separator-icon {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-left: 0.5rem;
+}
+
+/* Icon styles for common icons */
+.btn-icon-envelope::before {
+  content: '✉';
+  font-size: 1.2em;
+}
+
+.btn-icon-arrow-right::after {
+  content: '▶';
+  font-size: 0.8em;
+}
+
+.btn-icon-close::after {
+  content: '✕';
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.btn-icon-cursor::after {
+  content: '👆';
+  font-size: 1em;
+}

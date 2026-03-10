@@ -1,0 +1,2 @@
+export { AllocationCard } from './AllocationCard';
+

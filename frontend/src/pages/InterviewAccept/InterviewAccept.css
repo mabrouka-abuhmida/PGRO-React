@@ -1,0 +1,138 @@
+.interview-accept-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F5F5F5 0%, #E5E5E5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.accept-container {
+  max-width: 600px;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+}
+
+.accept-content h1 {
+  color: #006B3F;
+  font-size: 1.75rem;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.accept-content > p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.option-details {
+  background: #F9F9F9;
+  border-left: 4px solid #006B3F;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.option-details h2 {
+  color: #006B3F;
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+}
+
+.option-details p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.accept-actions {
+  text-align: center;
+}
+
+.btn-accept {
+  background-color: #006B3F;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-accept:hover:not(:disabled) {
+  background-color: #005030;
+}
+
+.btn-accept:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success-state {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #006B3F;
+  color: white;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.success-state h2 {
+  color: #006B3F;
+  font-size: 1.75rem;
+  margin: 0 0 1rem 0;
+}
+
+.success-state > p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.accepted-details {
+  background: #F9F9F9;
+  border-left: 4px solid #006B3F;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.accepted-details p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.loading-state p,
+.error-state p {
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.error-state h2 {
+  color: #BE1E2D;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+

@@ -1,0 +1,2 @@
+export { ManualAllocation } from './ManualAllocation';
+

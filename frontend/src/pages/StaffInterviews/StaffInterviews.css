@@ -1,0 +1,115 @@
+.staff-interviews-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-header p {
+  color: #666;
+  margin: 0;
+}
+
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.interview-card {
+  background: white;
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.interview-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.interview-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.interview-card .card-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+  flex: 1;
+}
+
+.interview-card .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.interview-card .card-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.submitted-info {
+  color: #666 !important;
+  font-size: 0.85rem !important;
+  font-style: italic;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: #BE1E2D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background: #9A1825;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+

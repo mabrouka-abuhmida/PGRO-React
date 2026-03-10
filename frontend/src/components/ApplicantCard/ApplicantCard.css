@@ -1,0 +1,52 @@
+.applicant-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.applicant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.applicant-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.applicant-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  flex: 1;
+}
+
+.applicant-card-info {
+  margin-bottom: 0.75rem;
+}
+
+.applicant-degree {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.applicant-email {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.applicant-document-status {
+  margin-top: 0.5rem;
+}
+
+.applicant-interview-status {
+  margin-top: 0.5rem;
+}
+
+.applicant-review-status {
+  margin-top: 0.5rem;
+}
+

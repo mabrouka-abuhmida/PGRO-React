@@ -1,0 +1,115 @@
+INTERNALDOCS/
+
+# Ignore Python cache everywhere
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+#devenv
+mise.toml
+
+# Frontend - Node modules
+frontend/node_modules/
+node_modules/
+
+# Frontend - Build outputs
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.next/
+frontend/.nuxt/
+frontend/.output/
+
+# Frontend - Environment variables
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+.env
+
+# Frontend - IDE and editor files
+frontend/.idea/
+frontend/.vscode/
+frontend/*.swp
+frontend/*.swo
+frontend/.DS_Store
+
+# Frontend - Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# Backend - Python
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.so
+backend/.Python
+backend/env/
+backend/venv/
+backend/ENV/
+backend/env.bak/
+backend/venv.bak/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.dmypy.json
+backend/dmypy.json
+backend/.coverage
+backend/htmlcov/
+backend/dist/
+backend/build/
+backend/*.egg-info/
+backend/.eggs/
+
+# Backend - Environment variables
+backend/.env
+backend/.env.local# Catch all .env files anywhere in the project
+**/.env
+**/.env.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+Thumbs.db
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+**/__pycache__/
+*.pyc
+venv
+
+# CodeRabbit CLI files
+setup-coderabbit.ps1
+review-code.ps1
+setup-git-hooks.ps1
+.coderabbit.yaml
+
+# WSL installation files
+install-wsl.ps1

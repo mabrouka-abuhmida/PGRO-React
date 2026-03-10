@@ -1,0 +1,2 @@
+export { ApplicantCard } from './ApplicantCard';
+

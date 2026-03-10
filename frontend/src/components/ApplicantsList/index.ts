@@ -1,0 +1,2 @@
+export { ApplicantsList } from './ApplicantsList';
+

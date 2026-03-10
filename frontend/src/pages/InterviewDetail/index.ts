@@ -1,0 +1,3 @@
+export { InterviewDetail } from './InterviewDetail';
+
+

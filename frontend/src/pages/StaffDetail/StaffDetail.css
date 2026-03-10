@@ -1,0 +1,215 @@
+.staff-detail {
+  padding: 2rem 0;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.staff-info-card {
+  padding: 2rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #D9D9D9;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-delete {
+  color: #d32f2f !important;
+  border-color: #d32f2f !important;
+}
+
+.btn-delete:hover:not(:disabled) {
+  background-color: #d32f2f;
+  color: white !important;
+}
+
+.staff-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #111111;
+}
+
+.header-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.info-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-section {
+  padding-top: 2rem;
+  border-top: 2px solid #D9D9D9;
+}
+
+.info-section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.info-grid div {
+  padding: 0.75rem;
+  background: #F5F5F5;
+  border-radius: 4px;
+}
+
+.capacity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.capacity-card {
+  padding: 1.5rem;
+  background: #F5F5F5;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.capacity-card strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+}
+
+.capacity-card p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #BE1E2D;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Labels containing checkboxes - display as flex row */
+.form-group label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+  line-height: 1.5;
+  gap: 0.625rem;
+  user-select: none;
+}
+
+.form-group label:has(input[type="checkbox"]):hover {
+  color: #006B3F;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.form-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #006B3F;
+  border: 2px solid #006B3F;
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.form-group input[type="checkbox"]:checked {
+  background-color: #006B3F;
+  border-color: #006B3F;
+}
+
+.form-group input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.form-group input[type="checkbox"]:hover {
+  border-color: #006B3F;
+  box-shadow: 0 0 0 3px rgba(0, 107, 63, 0.1);
+}
+
+.form-group input[type="checkbox"]:focus {
+  outline: none;
+  border-color: #006B3F;
+  box-shadow: 0 0 0 3px rgba(0, 107, 63, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 4rem 0;
+  font-size: 1.125rem;
+}
+

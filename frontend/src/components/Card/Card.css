@@ -1,0 +1,28 @@
+.card {
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+
+.card-elevated {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.card-outlined {
+  border: 2px solid #D9D9D9;
+  background: #F5F5F5;
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:hover {
+  border-color: #BE1E2D;
+  box-shadow: 0 4px 12px rgba(190, 30, 45, 0.15);
+  transform: translateY(-2px);
+}
+

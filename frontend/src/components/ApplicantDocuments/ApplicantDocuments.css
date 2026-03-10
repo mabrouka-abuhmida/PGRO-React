@@ -1,0 +1,46 @@
+.document-checklist-card {
+  padding: 2rem;
+}
+
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checklist-warning {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #E9D5FF;
+  border: 1px solid #7B2CBF;
+  border-radius: 4px;
+}
+
+.documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.document-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #F5F5F5;
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+}
+
+.document-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.document-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+

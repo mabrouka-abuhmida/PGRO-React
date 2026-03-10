@@ -1,0 +1,2 @@
+export { StaffDetail } from './StaffDetail';
+

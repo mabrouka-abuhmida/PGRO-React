@@ -1,0 +1,137 @@
+.interview-scheduler-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.scheduler-header {
+  margin-bottom: 2rem;
+}
+
+.scheduler-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.no-email-message {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scheduler-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.applicant-info-box {
+  background: #F5F5F5;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.applicant-info-box p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.scheduler-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #111111;
+  font-size: 1rem;
+}
+
+.form-input {
+  padding: 0.75rem;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #006B3F;
+}
+
+.date-time-option {
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #F9F9F9;
+}
+
+.option-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.option-number {
+  font-weight: 600;
+  color: #006B3F;
+  font-size: 0.95rem;
+}
+
+.date-time-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #D9D9D9;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.error {
+  color: #BE1E2D;
+}
+
+

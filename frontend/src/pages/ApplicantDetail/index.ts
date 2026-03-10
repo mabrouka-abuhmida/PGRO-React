@@ -1,0 +1,2 @@
+export { ApplicantDetail } from './ApplicantDetail';
+

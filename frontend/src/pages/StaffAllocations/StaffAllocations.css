@@ -1,0 +1,123 @@
+.staff-allocations {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+/* Use global h-hero class but override text-transform to match other staff pages */
+.page-header .h-hero {
+  margin: 0 0 0.5rem 0;
+  text-transform: none; /* Remove uppercase to match other staff pages */
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+.loading,
+.error,
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.empty-state {
+  background: white;
+  border-radius: 8px;
+  padding: 4rem 2rem;
+}
+
+.allocations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.allocation-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.allocation-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.applicant-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+  flex: 1;
+}
+
+/* Status badges now use the Badge component - styles removed */
+
+.card-body {
+  margin-bottom: 1.5rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.info-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.info-value {
+  color: #111111;
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-review {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  background: #BE1E2D;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-review:hover {
+  background: #9a1623;
+}
+
+.btn-review:active {
+  transform: translateY(1px);
+}
+

@@ -1,0 +1,2 @@
+export { AllocationsList } from './AllocationsList';
+
