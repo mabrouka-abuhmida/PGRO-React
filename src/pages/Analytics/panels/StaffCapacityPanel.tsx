@@ -5,7 +5,9 @@ import React from 'react';
 import { Card } from '@/components';
 import { useStaffCapacityAnalytics } from '@/hooks';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  Cell,
+  Legend
 } from 'recharts';
 import './panels.css';
 
@@ -245,7 +247,7 @@ export const StaffCapacityPanel: React.FC<StaffCapacityPanelProps> = () => {
                 }}
                 labelFormatter={(label) => `Staff: ${label}`}
               />
-              <Legend />
+              <Legend/>
               <Bar dataKey="utilization" fill="#0088FE" name="Utilization %" />
               <Bar dataKey="current" fill="#00C49F" name="Current" />
               <Bar dataKey="max" fill="#FFBB28" name="Max Capacity" />

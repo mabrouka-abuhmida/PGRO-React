@@ -2,7 +2,7 @@
  * VirtualizedList - Wrapper component for react-window List
  * Provides virtualization for long lists to improve performance
  */
-import React, { Fragment, useCallback } from "react";
+import React, { useCallback } from "react";
 import { List, RowComponentProps } from "react-window";
 
 interface VirtualizedListProps<T> {

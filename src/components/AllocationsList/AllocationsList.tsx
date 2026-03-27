@@ -2,7 +2,7 @@
  * AllocationsList - Virtualized list component for allocations
  * Uses react-window for performance with large datasets
  */
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo } from "react";
 import { List, RowComponentProps } from "react-window";
 import type { Allocation } from "@/types";
 import "./AllocationsList.css";

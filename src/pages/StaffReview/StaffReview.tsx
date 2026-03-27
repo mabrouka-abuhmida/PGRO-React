@@ -54,7 +54,7 @@ export const StaffReview: React.FC = () => {
 
   // Only show loading if allocation is loading, or if allocation exists and dependent queries are loading
   // Note: review can be null (no review exists yet) - that's valid, so we don't wait for it
-  const loading = loadingAllocation || (allocation && loadingApplicant);
+  // const loading = loadingAllocation || (allocation && loadingApplicant);
 
   // Mutations
   const createOrUpdateReviewMutation = useCreateOrUpdateStaffReview();
@@ -220,7 +220,7 @@ export const StaffReview: React.FC = () => {
     }
   };
 
-  const handleInputChange = (field: keyof StaffReviewCreate, value: string | null) => {
+  const handleInputChange = (field: keyof StaffReviewCreate, value?: boolean | string | null) => {
     setLocalFormData(prev => ({ ...prev, [field]: value }));
   };
 

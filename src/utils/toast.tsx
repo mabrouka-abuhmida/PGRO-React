@@ -2,7 +2,6 @@
  * Toast notification utility
  * Provides a consistent API for showing toast notifications
  */
-import React from 'react';
 import toast from 'react-hot-toast';
 
 /**
@@ -79,7 +78,7 @@ export const toastPromise = <T,>(
  */
 export const toastConfirm = (message: string): Promise<boolean> => {
   return new Promise((resolve) => {
-    const toastId = toast(
+    toast(
       (t) => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <span>{message}</span>

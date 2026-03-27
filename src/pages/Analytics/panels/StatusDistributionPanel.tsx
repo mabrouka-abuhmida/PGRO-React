@@ -1,14 +1,21 @@
 /**
  * StatusDistributionPanel - Application status distribution pie chart + table
  */
-import React from 'react';
-import { Card } from '@/components';
-import {
-  PieChart, Pie, Cell, ResponsiveContainer, Tooltip
-} from 'recharts';
-import './panels.css';
+import React from "react";
+import { Card } from "@/components";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import "./panels.css";
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658', '#ff7300'];
+const COLORS = [
+  "#0088FE",
+  "#00C49F",
+  "#FFBB28",
+  "#FF8042",
+  "#8884d8",
+  "#82ca9d",
+  "#ffc658",
+  "#ff7300",
+];
 
 interface StatusDistributionPanelProps {
   statistics: {
@@ -16,14 +23,20 @@ interface StatusDistributionPanelProps {
   } | null;
 }
 
-export const StatusDistributionPanel: React.FC<StatusDistributionPanelProps> = ({ statistics }) => {
-  const statusData = statistics ? Object.entries(statistics.status_breakdown)
-    .map(([status, count]) => ({
-      name: status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-      value: count,
-      rawName: status
-    }))
-    .sort((a, b) => b.value - a.value) : [];
+export const StatusDistributionPanel: React.FC<
+  StatusDistributionPanelProps
+> = ({ statistics }) => {
+  const statusData = statistics
+    ? Object.entries(statistics.status_breakdown)
+        .map(([status, count]) => ({
+          name: status
+            .replace(/_/g, " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase()),
+          value: count,
+          rawName: status,
+        }))
+        .sort((a, b) => b.value - a.value)
+    : [];
 
   const total = statusData.reduce((sum, item) => sum + item.value, 0);
 
@@ -38,14 +51,29 @@ export const StatusDistributionPanel: React.FC<StatusDistributionPanelProps> = (
               cx="50%"
               cy="50%"
               labelLine={true}
-              label={({ name, percent }: { name: string; percent: number }) => percent > 0.05 ? `${name}: ${(percent * 100).toFixed(0)}%` : ''}
+              label={({ name, percent }) => {
+                return (
+                  <>
+                    {percent && percent > 0.05 ? (
+                      <p>
+                        `${name}: ${(percent * 100).toFixed(0)}%`
+                      </p>
+                    ) : (
+                      <p></p>
+                    )}
+                  </>
+                );
+              }}
               outerRadius={120}
               fill="#8884d8"
               dataKey="value"
               minAngle={5}
             >
               {statusData.map((_, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
               ))}
             </Pie>
             <Tooltip />
@@ -69,7 +97,9 @@ export const StatusDistributionPanel: React.FC<StatusDistributionPanelProps> = (
               <tr key={item.rawName}>
                 <td>{item.name}</td>
                 <td>{item.value}</td>
-                <td>{total > 0 ? ((item.value / total) * 100).toFixed(1) : 0}%</td>
+                <td>
+                  {total > 0 ? ((item.value / total) * 100).toFixed(1) : 0}%
+                </td>
               </tr>
             ))}
           </tbody>
@@ -78,4 +108,3 @@ export const StatusDistributionPanel: React.FC<StatusDistributionPanelProps> = (
     </div>
   );
 };
-

@@ -6,6 +6,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { interviewRecordService, type InterviewRecord } from '@/services/interviewRecordService';
 import { apiClient } from '@/services/api';
 import { logger } from '@/utils/logger';
+import {AxiosError} from "axios"
 import './InterviewAccept.css';
 
 interface InterviewOption {
@@ -92,11 +93,17 @@ export const InterviewAccept: React.FC = () => {
       }
     } catch (error: unknown) {
       logger.error('Error accepting interview option:', error);
-      setError(
+      if(error instanceof AxiosError) {
+        setError(
         error?.response?.data?.detail || 
         error?.message || 
         'Failed to accept interview option. Please contact the administrator.'
       );
+      }else {
+        setError(
+        'Failed to accept interview option. Please contact the administrator.'
+      );
+      }      
     } finally {
       setAccepting(false);
     }

@@ -10,7 +10,9 @@ import { getErrorMessage } from "@/types";
 import type { DocumentChecklist } from "@/types";
 import "./ApplicantDocuments.css";
 
-type DocumentX = Document & { filename: string };
+interface DocumentX extends Document {
+  filename?: string;
+}
 
 interface ApplicantDocumentsProps {
   applicantId: string;
