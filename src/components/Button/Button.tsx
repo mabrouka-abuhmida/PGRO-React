@@ -2,18 +2,25 @@
  * Button component - Modern button styles with USW colors
  * Supports split buttons, speech bubbles, icons, and more
  */
-import React from 'react';
-import './Button.css';
+import React from "react";
+import "./Button.css";
 
 interface ButtonProps {
-  children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'split' | 'bubble' | 'double-outline';
-  size?: 'sm' | 'md' | 'lg';
+  children?: React.ReactNode;
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "text"
+    | "split"
+    | "bubble"
+    | "double-outline";
+  size?: "sm" | "md" | "lg";
   onClick?: () => void;
   disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   className?: string;
-  'aria-label'?: string;
+  "aria-label"?: string;
   // Split button props
   splitLeft?: string;
   splitRight?: string;
@@ -21,37 +28,39 @@ interface ButtonProps {
   onSplitRightClick?: () => void;
   // Icon props
   icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
   // Speech bubble props
   hasTail?: boolean;
-  tailPosition?: 'left' | 'right' | 'bottom';
+  tailPosition?: "left" | "right" | "bottom";
   // Separator props
   hasSeparator?: boolean;
   separatorIcon?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   onClick,
   disabled = false,
-  type = 'button',
-  className = '',
-  'aria-label': ariaLabel,
+  type = "button",
+  className = "",
+  "aria-label": ariaLabel,
   splitLeft,
   splitRight,
   onSplitLeftClick,
   onSplitRightClick,
   icon,
-  iconPosition = 'right',
+  iconPosition = "right",
   hasTail = false,
-  tailPosition = 'bottom',
+  tailPosition = "bottom",
   hasSeparator = false,
   separatorIcon,
+  style,
 }) => {
   // Split button variant
-  if (variant === 'split' && splitLeft && splitRight) {
+  if (variant === "split" && splitLeft && splitRight) {
     return (
       <div className={`btn-split btn-split-${size} ${className}`}>
         <button
@@ -60,6 +69,7 @@ export const Button: React.FC<ButtonProps> = ({
           onClick={onSplitLeftClick}
           disabled={disabled}
           aria-label={ariaLabel || splitLeft}
+          style={style}
         >
           {splitLeft}
         </button>
@@ -77,8 +87,9 @@ export const Button: React.FC<ButtonProps> = ({
   }
 
   // Speech bubble variant
-  if (variant === 'bubble') {
-    const bubbleClasses = `btn btn-bubble btn-${variant} btn-${size} ${hasTail ? `btn-tail btn-tail-${tailPosition}` : ''} ${className}`.trim();
+  if (variant === "bubble") {
+    const bubbleClasses =
+      `btn btn-bubble btn-${variant} btn-${size} ${hasTail ? `btn-tail btn-tail-${tailPosition}` : ""} ${className}`.trim();
     return (
       <button
         type={type}
@@ -87,15 +98,20 @@ export const Button: React.FC<ButtonProps> = ({
         disabled={disabled}
         aria-label={ariaLabel}
       >
-        {icon && iconPosition === 'left' && <span className="btn-icon-left">{icon}</span>}
+        {icon && iconPosition === "left" && (
+          <span className="btn-icon-left">{icon}</span>
+        )}
         {children}
-        {icon && iconPosition === 'right' && <span className="btn-icon-right">{icon}</span>}
+        {icon && iconPosition === "right" && (
+          <span className="btn-icon-right">{icon}</span>
+        )}
       </button>
     );
   }
 
   // Regular button with optional icon and separator
-  const buttonClasses = `btn btn-${variant} btn-${size} ${hasTail ? `btn-tail btn-tail-${tailPosition}` : ''} ${className}`.trim();
+  const buttonClasses =
+    `btn btn-${variant} btn-${size} ${hasTail ? `btn-tail btn-tail-${tailPosition}` : ""} ${className}`.trim();
 
   return (
     <button
@@ -105,7 +121,9 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       aria-label={ariaLabel}
     >
-      {icon && iconPosition === 'left' && <span className="btn-icon-left">{icon}</span>}
+      {icon && iconPosition === "left" && (
+        <span className="btn-icon-left">{icon}</span>
+      )}
       {children}
       {hasSeparator && separatorIcon && (
         <>
@@ -113,7 +131,9 @@ export const Button: React.FC<ButtonProps> = ({
           <span className="btn-separator-icon">{separatorIcon}</span>
         </>
       )}
-      {icon && iconPosition === 'right' && !hasSeparator && <span className="btn-icon-right">{icon}</span>}
+      {icon && iconPosition === "right" && !hasSeparator && (
+        <span className="btn-icon-right">{icon}</span>
+      )}
     </button>
   );
 };

@@ -37,7 +37,7 @@ export const useCreateOrUpdateInterviewRecord = () => {
   
   return useMutation({
     mutationFn: (data: InterviewRecordCreate) => interviewRecordService.createOrUpdate(data),
-    onSuccess: (data, variables) => {
+    onSuccess: (data, _variables) => {
       // Invalidate and refetch the specific record to get complete updated data
       if (data.id) {
         queryClient.invalidateQueries({ queryKey: ['interview-record', data.id] });

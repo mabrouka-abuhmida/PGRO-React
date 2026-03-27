@@ -1,15 +1,19 @@
 /**
  * AllocationNotes component - Display and manage notes for an allocation
  */
-import React, { useState, useEffect, useCallback } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
-import { Button, Badge } from '@/components';
-import { allocationNoteService } from '@/services/allocationNoteService';
-import { logger } from '@/utils/logger';
-import { getErrorMessage } from '@/types';
-import { toastError, toastConfirm } from '@/utils/toast';
-import type { AllocationNote, AllocationNoteCreate, AllocationNoteReply } from '@/types';
-import './AllocationNotes.css';
+import React, { useState, useEffect, useCallback } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button, Badge } from "@/components";
+import { allocationNoteService } from "@/services/allocationNoteService";
+import { logger } from "@/utils/logger";
+import { getErrorMessage } from "@/types";
+import { toastError, toastConfirm } from "@/utils/toast";
+import type {
+  AllocationNote,
+  AllocationNoteCreate,
+  AllocationNoteReply,
+} from "@/types";
+import "./AllocationNotes.css";
 
 interface AllocationNotesProps {
   allocationId: string;
@@ -26,9 +30,9 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [editingNote, setEditingNote] = useState<string | null>(null);
-  const [newNoteText, setNewNoteText] = useState('');
-  const [replyText, setReplyText] = useState('');
-  const [editText, setEditText] = useState('');
+  const [newNoteText, setNewNoteText] = useState("");
+  const [replyText, setReplyText] = useState("");
+  const [editText, setEditText] = useState("");
   const [sendToStaff, setSendToStaff] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [expandedNotes, setExpandedNotes] = useState<Set<string>>(new Set());
@@ -40,13 +44,13 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
       setNotes(data);
       // Auto-expand all notes
       const allNoteIds = new Set<string>();
-      data.forEach(note => {
+      data.forEach((note) => {
         allNoteIds.add(note.id);
-        note.replies?.forEach(reply => allNoteIds.add(reply.id));
+        note.replies?.forEach((reply) => allNoteIds.add(reply.id));
       });
       setExpandedNotes(allNoteIds);
     } catch (error) {
-      logger.error('Error loading notes:', error);
+      logger.error("Error loading notes:", error);
     } finally {
       setLoading(false);
     }
@@ -67,13 +71,13 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
         author_user_id: user.id,
       };
       await allocationNoteService.create(allocationId, noteData);
-      setNewNoteText('');
+      setNewNoteText("");
       setSendToStaff(false);
       setShowCreateForm(false);
       await loadNotes();
     } catch (error: unknown) {
-      logger.error('Error creating note:', error);
-      toastError(getErrorMessage(error, 'Failed to create note'));
+      logger.error("Error creating note:", error);
+      toastError(getErrorMessage(error, "Failed to create note"));
     } finally {
       setSubmitting(false);
     }
@@ -89,12 +93,12 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
         author_user_id: user.id,
       };
       await allocationNoteService.reply(allocationId, parentNoteId, replyData);
-      setReplyText('');
+      setReplyText("");
       setReplyingTo(null);
       await loadNotes();
     } catch (error: unknown) {
-      logger.error('Error replying to note:', error);
-      toastError(getErrorMessage(error, 'Failed to reply'));
+      logger.error("Error replying to note:", error);
+      toastError(getErrorMessage(error, "Failed to reply"));
     } finally {
       setSubmitting(false);
     }
@@ -109,12 +113,12 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
         note_text: editText.trim(),
         author_user_id: user.id,
       });
-      setEditText('');
+      setEditText("");
       setEditingNote(null);
       await loadNotes();
     } catch (error: unknown) {
-      logger.error('Error updating note:', error);
-      toastError(getErrorMessage(error, 'Failed to update note'));
+      logger.error("Error updating note:", error);
+      toastError(getErrorMessage(error, "Failed to update note"));
     } finally {
       setSubmitting(false);
     }
@@ -122,8 +126,10 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
 
   const handleDelete = async (noteId: string) => {
     if (!user) return;
-    
-    const confirmed = await toastConfirm('Are you sure you want to delete this note?');
+
+    const confirmed = await toastConfirm(
+      "Are you sure you want to delete this note?",
+    );
     if (!confirmed) return;
 
     try {
@@ -131,8 +137,8 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
       await allocationNoteService.delete(allocationId, noteId, user.id);
       await loadNotes();
     } catch (error: unknown) {
-      logger.error('Error deleting note:', error);
-      toastError(getErrorMessage(error, 'Failed to delete note'));
+      logger.error("Error deleting note:", error);
+      toastError(getErrorMessage(error, "Failed to delete note"));
     } finally {
       setSubmitting(false);
     }
@@ -149,8 +155,11 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
   const canReplyToNote = (note: AllocationNote): boolean => {
     // Staff can reply to admin notes, admins can reply to any note
     if (!user) return false;
-    if (user.role === 'PGR_LEAD' || user.role === 'ADMIN') return true;
-    if (user.role === 'STAFF' && (note.author_role === 'PGR_LEAD' || note.author_role === 'ADMIN')) {
+    if (user.role === "PGR_LEAD" || user.role === "ADMIN") return true;
+    if (
+      user.role === "STAFF" &&
+      (note.author_role === "PGR_LEAD" || note.author_role === "ADMIN")
+    ) {
       return true;
     }
     return false;
@@ -164,15 +173,17 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000);
 
-    if (diffMins < 1) return 'Just now';
-    if (diffMins < 60) return `${diffMins} minute${diffMins !== 1 ? 's' : ''} ago`;
-    if (diffHours < 24) return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;
-    if (diffDays < 7) return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+    if (diffMins < 1) return "Just now";
+    if (diffMins < 60)
+      return `${diffMins} minute${diffMins !== 1 ? "s" : ""} ago`;
+    if (diffHours < 24)
+      return `${diffHours} hour${diffHours !== 1 ? "s" : ""} ago`;
+    if (diffDays < 7) return `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
     return date.toLocaleDateString();
   };
 
   const toggleNoteExpanded = (noteId: string) => {
-    setExpandedNotes(prev => {
+    setExpandedNotes((prev) => {
       const next = new Set(prev);
       if (next.has(noteId)) {
         next.delete(noteId);
@@ -198,7 +209,7 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
             onClick={() => setShowCreateForm(!showCreateForm)}
             disabled={submitting}
           >
-            {showCreateForm ? 'Cancel' : '+ Add Note'}
+            {showCreateForm ? "Cancel" : "+ Add Note"}
           </Button>
         )}
       </div>
@@ -229,7 +240,7 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
               onClick={handleCreateNote}
               disabled={!newNoteText.trim() || submitting}
             >
-              {submitting ? 'Creating...' : 'Create Note'}
+              {submitting ? "Creating..." : "Create Note"}
             </Button>
           </div>
         </div>
@@ -237,7 +248,7 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
 
       {notes.length === 0 ? (
         <div className="allocation-notes-empty">
-          <p>No notes yet. {canCreate && 'Create the first note above.'}</p>
+          <p>No notes yet. {canCreate && "Create the first note above."}</p>
         </div>
       ) : (
         <div className="allocation-notes-list">
@@ -252,29 +263,31 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
                 onToggleExpanded={() => toggleNoteExpanded(note.id)}
                 onReply={() => {
                   setReplyingTo(note.id);
-                  setReplyText('');
+                  setReplyText("");
                 }}
                 onEdit={() => {
                   setEditingNote(note.id);
                   setEditText(note.note_text);
                 }}
                 onDelete={() => handleDelete(note.id)}
-                replyText={replyingTo === note.id ? replyText : ''}
+                replyText={replyingTo === note.id ? replyText : ""}
                 onReplyTextChange={(text) => setReplyText(text)}
                 onReplySubmit={() => handleReply(note.id)}
-                editText={editingNote === note.id ? editText : ''}
+                editText={editingNote === note.id ? editText : ""}
                 onEditTextChange={(text) => setEditText(text)}
                 onEditSubmit={() => handleEdit(note.id)}
                 onEditCancel={() => {
                   setEditingNote(null);
-                  setEditText('');
+                  setEditText("");
                 }}
                 submitting={submitting}
                 formatDate={formatDate}
                 user={user}
-                hasReplies={note.replies && note.replies.length > 0}
-                renderReplies={() => (
-                  note.replies && note.replies.length > 0 && expandedNotes.has(note.id) ? (
+                hasReplies={note.replies ? note.replies.length > 0 : false}
+                renderReplies={() =>
+                  note.replies &&
+                  note.replies.length > 0 &&
+                  expandedNotes.has(note.id) ? (
                     <div className="allocation-note-replies">
                       {note.replies.map((reply) => (
                         <NoteItem
@@ -294,12 +307,12 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
                           replyText=""
                           onReplyTextChange={() => {}}
                           onReplySubmit={() => {}}
-                          editText={editingNote === reply.id ? editText : ''}
+                          editText={editingNote === reply.id ? editText : ""}
                           onEditTextChange={(text) => setEditText(text)}
                           onEditSubmit={() => handleEdit(reply.id)}
                           onEditCancel={() => {
                             setEditingNote(null);
-                            setEditText('');
+                            setEditText("");
                           }}
                           submitting={submitting}
                           formatDate={formatDate}
@@ -310,7 +323,7 @@ export const AllocationNotes: React.FC<AllocationNotesProps> = ({
                       ))}
                     </div>
                   ) : null
-                )}
+                }
               />
             </div>
           ))}
@@ -367,26 +380,39 @@ const NoteItem: React.FC<NoteItemProps> = ({
   hasReplies,
   renderReplies,
 }) => {
-  const isEditing = editText !== '';
+  const isEditing = editText !== "";
 
   return (
-    <div className={`allocation-note-item ${note.parent_note_id ? 'allocation-note-reply' : ''}`}>
+    <div
+      className={`allocation-note-item ${note.parent_note_id ? "allocation-note-reply" : ""}`}
+    >
       <div className="allocation-note-header">
         <div className="allocation-note-author">
-          <strong>{note.author_name || 'Unknown User'}</strong>
+          <strong>{note.author_name || "Unknown User"}</strong>
           {note.author_role && (
-            <Badge variant={note.author_role === 'PGR_LEAD' || note.author_role === 'ADMIN' ? 'info' : 'default'}>
-              {note.author_role.replace('_', ' ')}
+            <Badge
+              variant={
+                note.author_role === "PGR_LEAD" || note.author_role === "ADMIN"
+                  ? "info"
+                  : "default"
+              }
+            >
+              {note.author_role.replace("_", " ")}
             </Badge>
           )}
           {note.is_sent_to_staff && (
-            <Badge variant="success" title={`Sent to staff on ${note.sent_at ? formatDate(note.sent_at) : 'unknown'}`}>
+            <Badge
+              variant="success"
+              title={`Sent to staff on ${note.sent_at ? formatDate(note.sent_at) : "unknown"}`}
+            >
               📧 Sent
             </Badge>
           )}
         </div>
         <div className="allocation-note-meta">
-          <span className="allocation-note-date">{formatDate(note.created_at)}</span>
+          <span className="allocation-note-date">
+            {formatDate(note.created_at)}
+          </span>
           {note.updated_at && note.updated_at !== note.created_at && (
             <span className="allocation-note-edited">(edited)</span>
           )}
@@ -396,7 +422,8 @@ const NoteItem: React.FC<NoteItemProps> = ({
               onClick={onToggleExpanded}
               type="button"
             >
-              {isExpanded ? '▼' : '▶'} {note.replies?.length || 0} {note.replies?.length === 1 ? 'reply' : 'replies'}
+              {isExpanded ? "▼" : "▶"} {note.replies?.length || 0}{" "}
+              {note.replies?.length === 1 ? "reply" : "replies"}
             </button>
           )}
         </div>
@@ -413,10 +440,20 @@ const NoteItem: React.FC<NoteItemProps> = ({
               disabled={submitting}
             />
             <div className="allocation-note-edit-actions">
-              <Button variant="outline" size="sm" onClick={onEditSubmit} disabled={!editText.trim() || submitting}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={onEditSubmit}
+                disabled={!editText.trim() || submitting}
+              >
                 Save
               </Button>
-              <Button variant="outline" size="sm" onClick={onEditCancel} disabled={submitting}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={onEditCancel}
+                disabled={submitting}
+              >
                 Cancel
               </Button>
             </div>
@@ -428,16 +465,32 @@ const NoteItem: React.FC<NoteItemProps> = ({
 
       <div className="allocation-note-actions">
         {canReply && !isEditing && (
-          <Button variant="outline" size="sm" onClick={onReply} disabled={submitting || isReplying}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onReply}
+            disabled={submitting || isReplying}
+          >
             Reply
           </Button>
         )}
         {canEdit && !isEditing && (
           <>
-            <Button variant="outline" size="sm" onClick={onEdit} disabled={submitting}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onEdit}
+              disabled={submitting}
+            >
               Edit
             </Button>
-            <Button variant="outline" size="sm" onClick={onDelete} disabled={submitting} className="btn-delete">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onDelete}
+              disabled={submitting}
+              className="btn-delete"
+            >
               Delete
             </Button>
           </>
@@ -455,14 +508,19 @@ const NoteItem: React.FC<NoteItemProps> = ({
             disabled={submitting}
           />
           <div className="allocation-note-reply-actions">
-            <Button variant="outline" size="sm" onClick={onReplySubmit} disabled={!replyText.trim() || submitting}>
-              {submitting ? 'Sending...' : 'Send Reply'}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onReplySubmit}
+              disabled={!replyText.trim() || submitting}
+            >
+              {submitting ? "Sending..." : "Send Reply"}
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => {
-                onReplyTextChange('');
+                onReplyTextChange("");
                 onReply();
               }}
               disabled={submitting}
@@ -477,4 +535,3 @@ const NoteItem: React.FC<NoteItemProps> = ({
     </div>
   );
 };
-

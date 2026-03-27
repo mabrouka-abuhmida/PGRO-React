@@ -1,6 +1,6 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { allocationService } from '@/services/allocationService';
-import type { Allocation, AllocationCreate } from '@/types';
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { allocationService } from "@/services/allocationService";
+import type { Allocation, AllocationCreate } from "@/types";
 
 // Type helpers for React Query cache updates
 type AllocationQueryData = Allocation | undefined;
@@ -16,7 +16,7 @@ export const useAllocations = (filters?: {
   page_size?: number;
 }) => {
   return useQuery({
-    queryKey: ['allocations', filters],
+    queryKey: ["allocations", filters],
     queryFn: () => {
       // If term is provided, use getByIntake instead of list
       if (filters?.term && filters?.year) {
@@ -31,7 +31,7 @@ export const useAllocations = (filters?: {
 
 export const useAllocation = (id: string | undefined) => {
   return useQuery({
-    queryKey: ['allocation', id],
+    queryKey: ["allocation", id],
     queryFn: () => allocationService.get(id!),
     enabled: !!id,
     staleTime: 5 * 60 * 1000, // Cache for 5 minutes
@@ -41,99 +41,104 @@ export const useAllocation = (id: string | undefined) => {
 
 export const useAllocationsByIntake = (year: number, term: string) => {
   return useQuery({
-    queryKey: ['allocations', 'intake', year, term],
+    queryKey: ["allocations", "intake", year, term],
     queryFn: () => allocationService.getByIntake(year, term),
   });
 };
 
 export const useCreateAllocation = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (data: AllocationCreate) => allocationService.create(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['allocations'] });
+      queryClient.invalidateQueries({ queryKey: ["allocations"] });
     },
   });
 };
 
 export const useUpdateAllocation = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: ({ id, data }: { id: string; data: Partial<Allocation> }) =>
       allocationService.update(id, data),
     // Optimistic update
     onMutate: async ({ id, data }) => {
-      await queryClient.cancelQueries({ queryKey: ['allocation', id] });
-      await queryClient.cancelQueries({ queryKey: ['allocations'] });
-      
-      const previousAllocation = queryClient.getQueryData(['allocation', id]);
-      const previousAllocations = queryClient.getQueryData(['allocations']);
-      
+      await queryClient.cancelQueries({ queryKey: ["allocation", id] });
+      await queryClient.cancelQueries({ queryKey: ["allocations"] });
+
+      const previousAllocation = queryClient.getQueryData(["allocation", id]);
+      const previousAllocations = queryClient.getQueryData(["allocations"]);
+
       // Optimistically update
-      queryClient.setQueryData(['allocation', id], (old: AllocationQueryData) => {
-        if (!old) return old;
-        return { ...old, ...data };
-      });
-      
-      queryClient.setQueryData(['allocations'], (old: AllocationsQueryData) => {
+      queryClient.setQueryData(
+        ["allocation", id],
+        (old: AllocationQueryData) => {
+          if (!old) return old;
+          return { ...old, ...data };
+        },
+      );
+
+      queryClient.setQueryData(["allocations"], (old: AllocationsQueryData) => {
         if (!old) return old;
         if (Array.isArray(old)) {
           return old.map((item: Allocation) =>
-            item.id === id ? { ...item, ...data } : item
+            item.id === id ? { ...item, ...data } : item,
           );
         }
         if (old.items) {
           return {
             ...old,
             items: old.items.map((item: Allocation) =>
-              item.id === id ? { ...item, ...data } : item
+              item.id === id ? { ...item, ...data } : item,
             ),
           };
         }
         return old;
       });
-      
+
       return { previousAllocation, previousAllocations };
     },
-    onError: (err, variables, context) => {
+    onError: (_err, variables, context) => {
       if (context?.previousAllocation) {
-        queryClient.setQueryData(['allocation', variables.id], context.previousAllocation);
+        queryClient.setQueryData(
+          ["allocation", variables.id],
+          context.previousAllocation,
+        );
       }
       if (context?.previousAllocations) {
-        queryClient.setQueryData(['allocations'], context.previousAllocations);
+        queryClient.setQueryData(["allocations"], context.previousAllocations);
       }
     },
     onSuccess: (data, variables) => {
-      queryClient.setQueryData(['allocation', variables.id], data);
-      queryClient.invalidateQueries({ queryKey: ['allocations'] });
+      queryClient.setQueryData(["allocation", variables.id], data);
+      queryClient.invalidateQueries({ queryKey: ["allocations"] });
     },
   });
 };
 
 export const useDeleteAllocation = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (id: string) => allocationService.delete(id),
     onSuccess: (_, id) => {
-      queryClient.removeQueries({ queryKey: ['allocation', id] });
-      queryClient.invalidateQueries({ queryKey: ['allocations'] });
+      queryClient.removeQueries({ queryKey: ["allocation", id] });
+      queryClient.invalidateQueries({ queryKey: ["allocations"] });
     },
   });
 };
 
 export const useSendAllocationEmail = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (id: string) => allocationService.sendEmail(id),
     onSuccess: (_, id) => {
       // Invalidate allocation to get updated email_sent_at
-      queryClient.invalidateQueries({ queryKey: ['allocation', id] });
-      queryClient.invalidateQueries({ queryKey: ['allocations'] });
+      queryClient.invalidateQueries({ queryKey: ["allocation", id] });
+      queryClient.invalidateQueries({ queryKey: ["allocations"] });
     },
   });
 };
-

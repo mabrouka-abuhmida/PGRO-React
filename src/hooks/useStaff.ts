@@ -76,7 +76,7 @@ export const useUpdateStaff = () => {
       
       return { previousStaff, previousStaffList };
     },
-    onError: (err, variables, context) => {
+    onError: (_err, variables, context) => {
       if (context?.previousStaff) {
         queryClient.setQueryData(['staff', variables.id], context.previousStaff);
       }
