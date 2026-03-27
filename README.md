@@ -97,6 +97,7 @@ frontend/
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
+- `npm run test` - Execute tests cases using Jest
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint (allows up to 200 warnings)
 - `npm run lint:strict` - Run ESLint with zero warnings

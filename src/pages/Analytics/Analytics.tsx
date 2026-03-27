@@ -1,14 +1,17 @@
 /**
  * Analytics Dashboard - Redesigned with sidebar layout and panel system
  */
-import React, { useState } from 'react';
-import { AnalyticsLayout, type AnalyticsPanel } from '@/layouts/AnalyticsLayout';
-import { SkeletonCard } from '@/components';
+import React, { useState } from "react";
+import {
+  AnalyticsLayout,
+  type AnalyticsPanel,
+} from "@/layouts/AnalyticsLayout";
+import { SkeletonCard } from "@/components";
 import {
   useTopicsByTheme,
   useApplicationStatistics,
   useAcceleratorResearchThemeCorrelation,
-} from '@/hooks';
+} from "@/hooks";
 import {
   OverviewPanel,
   StatusDistributionPanel,
@@ -22,25 +25,29 @@ import {
   ResearchGroupCoveragePanel,
   AcceptanceRatesPanel,
   StaffPerformanceRatesPanel,
-} from './panels';
-import './Analytics.css';
+} from "./panels";
+import "./Analytics.css";
 
 export const Analytics: React.FC = () => {
-  const [currentPanel, setCurrentPanel] = useState<AnalyticsPanel>('overview');
-  
-  // Fetch analytics data in parallel
-  const { data: topicsByTheme, isLoading: loadingTopicsByTheme } = useTopicsByTheme();
-  const { data: statistics, isLoading: loadingStatistics } = useApplicationStatistics();
-  const { data: correlation = [], isLoading: loadingCorrelation } = useAcceleratorResearchThemeCorrelation();
+  const [currentPanel, setCurrentPanel] = useState<AnalyticsPanel>("overview");
 
-  const loading = loadingTopicsByTheme || loadingStatistics || loadingCorrelation;
+  // Fetch analytics data in parallel
+  const { data: topicsByTheme, isLoading: loadingTopicsByTheme } =
+    useTopicsByTheme();
+  const { data: statistics, isLoading: loadingStatistics } =
+    useApplicationStatistics();
+  const { data: correlation = [], isLoading: loadingCorrelation } =
+    useAcceleratorResearchThemeCorrelation();
+
+  const loading =
+    loadingTopicsByTheme || loadingStatistics || loadingCorrelation;
 
   const handlePrint = async () => {
     // Wait a bit to ensure charts are fully rendered
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     // Force browser to include background graphics and SVG elements
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       @media print {
         * {
@@ -56,9 +63,9 @@ export const Analytics: React.FC = () => {
       }
     `;
     document.head.appendChild(style);
-    
+
     window.print();
-    
+
     // Clean up after print
     setTimeout(() => {
       if (document.head.contains(style)) {
@@ -73,32 +80,32 @@ export const Analytics: React.FC = () => {
     }
 
     switch (currentPanel) {
-      case 'overview':
-        return <OverviewPanel statistics={statistics} />;
-      case 'status-distribution':
-        return <StatusDistributionPanel statistics={statistics} />;
-      case 'degree-distribution':
-        return <DegreeDistributionPanel statistics={statistics} />;
-      case 'intake-trends':
-        return <IntakeTrendsPanel statistics={statistics} />;
-      case 'application-pipeline':
-        return <ApplicationPipelinePanel statistics={statistics} />;
-      case 'research-themes':
-        return <ResearchThemesPanel topicsByTheme={topicsByTheme} />;
-      case 'topic-keywords':
-        return <TopicKeywordsPanel topicsByTheme={topicsByTheme} />;
-      case 'accelerator-correlation':
+      case "overview":
+        return <OverviewPanel statistics={statistics ?? null} />;
+      case "status-distribution":
+        return <StatusDistributionPanel statistics={statistics ?? null} />;
+      case "degree-distribution":
+        return <DegreeDistributionPanel statistics={statistics ?? null} />;
+      case "intake-trends":
+        return <IntakeTrendsPanel statistics={statistics ?? null} />;
+      case "application-pipeline":
+        return <ApplicationPipelinePanel statistics={statistics ?? null} />;
+      case "research-themes":
+        return <ResearchThemesPanel topicsByTheme={topicsByTheme ?? null} />;
+      case "topic-keywords":
+        return <TopicKeywordsPanel topicsByTheme={topicsByTheme ?? null} />;
+      case "accelerator-correlation":
         return <AcceleratorCorrelationPanel correlation={correlation} />;
-      case 'staff-capacity':
+      case "staff-capacity":
         return <StaffCapacityPanel />;
-      case 'research-group-coverage':
-        return <ResearchGroupCoveragePanel statistics={statistics} />;
-      case 'acceptance-rates':
+      case "research-group-coverage":
+        return <ResearchGroupCoveragePanel statistics={statistics ?? null} />;
+      case "acceptance-rates":
         return <AcceptanceRatesPanel />;
-      case 'staff-performance-rates':
+      case "staff-performance-rates":
         return <StaffPerformanceRatesPanel />;
       default:
-        return <OverviewPanel statistics={statistics} />;
+        return <OverviewPanel statistics={statistics ?? null} />;
     }
   };
 

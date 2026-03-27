@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQueries, useQueryClient } from '@tanstack/react-query';
-import { Card, Badge, Button, SkeletonList, AllocationsList, AllocationCard } from '@/components';
+import { Card, Badge, Button, SkeletonList} from '@/components';
 import { useAllocations, useUpdateAllocation, useDeleteAllocation, useSendAllocationEmail, useUpdateApplicant, useEmailParticipant, useDebounce } from '@/hooks';
 import { logger } from '@/utils/logger';
 import { getErrorMessage } from '@/types';

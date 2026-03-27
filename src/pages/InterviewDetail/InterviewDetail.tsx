@@ -163,7 +163,7 @@ export const InterviewDetail: React.FC = () => {
               className="ai-likelihood-badge"
               style={{ background: aiLikelihoodColor }}
             >
-              AI Likelihood: {aiLikelihood} ({applicant.ai_detection_probability.toFixed(0)}%)
+              AI Likelihood: {aiLikelihood} ({applicant.ai_detection_probability ? applicant.ai_detection_probability.toFixed(0) : "N/A"}%)
             </div>
           )}
         </div>

@@ -1,14 +1,12 @@
 /**
  * DegreeDistributionPanel - Degree type distribution (PhD vs MRes)
  */
-import React from 'react';
-import { Card } from '@/components';
-import {
-  PieChart, Pie, Cell, ResponsiveContainer, Tooltip
-} from 'recharts';
-import './panels.css';
+import React from "react";
+import { Card } from "@/components";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import "./panels.css";
 
-const COLORS = ['#0088FE', '#00C49F'];
+const COLORS = ["#0088FE", "#00C49F"];
 
 interface DegreeDistributionPanelProps {
   statistics: {
@@ -16,12 +14,15 @@ interface DegreeDistributionPanelProps {
   } | null;
 }
 
-export const DegreeDistributionPanel: React.FC<DegreeDistributionPanelProps> = ({ statistics }) => {
-  const degreeData = statistics ? Object.entries(statistics.degree_breakdown)
-    .map(([degree, count]) => ({
-      name: degree,
-      value: count
-    })) : [];
+export const DegreeDistributionPanel: React.FC<
+  DegreeDistributionPanelProps
+> = ({ statistics }) => {
+  const degreeData = statistics
+    ? Object.entries(statistics.degree_breakdown).map(([degree, count]) => ({
+        name: degree,
+        value: count,
+      }))
+    : [];
 
   const total = degreeData.reduce((sum, item) => sum + item.value, 0);
 
@@ -38,13 +39,28 @@ export const DegreeDistributionPanel: React.FC<DegreeDistributionPanelProps> = (
               innerRadius={60}
               outerRadius={120}
               labelLine={true}
-              label={({ name, percent }: { name: string; percent: number }) => percent > 0.05 ? `${name}: ${(percent * 100).toFixed(0)}%` : ''}
+              label={({ name, percent }) => {
+                return (
+                  <>
+                    {percent && percent > 0.05 ? (
+                      <p>
+                        `${name}: ${(percent * 100).toFixed(0)}%`
+                      </p>
+                    ) : (
+                      <p></p>
+                    )}
+                  </>
+                );
+              }}
               fill="#8884d8"
               dataKey="value"
               minAngle={5}
             >
               {degreeData.map((_, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
               ))}
             </Pie>
             <Tooltip />
@@ -68,7 +84,9 @@ export const DegreeDistributionPanel: React.FC<DegreeDistributionPanelProps> = (
               <tr key={item.name}>
                 <td>{item.name}</td>
                 <td>{item.value}</td>
-                <td>{total > 0 ? ((item.value / total) * 100).toFixed(1) : 0}%</td>
+                <td>
+                  {total > 0 ? ((item.value / total) * 100).toFixed(1) : 0}%
+                </td>
               </tr>
             ))}
           </tbody>
@@ -77,4 +95,3 @@ export const DegreeDistributionPanel: React.FC<DegreeDistributionPanelProps> = (
     </div>
   );
 };
-

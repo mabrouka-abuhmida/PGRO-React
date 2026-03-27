@@ -622,7 +622,7 @@ export const ApplicantDetail: React.FC = () => {
               <ApplicantDocuments
                 applicantId={applicantId}
                 documents={documents}
-                documentChecklist={documentChecklist}
+                documentChecklist={documentChecklist ?? null}
                 onUpload={handleDocumentUpload}
                 onDelete={handleDeleteDocument}
                 uploading={uploadingDocument}

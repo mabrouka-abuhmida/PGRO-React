@@ -6,7 +6,7 @@ import { Button } from '@/components';
 import { fileService } from '@/services/fileService';
 import { documentService } from '@/services/documentService';
 import { logger } from '@/utils/logger';
-import { toastError, toastWarning, toastSuccess } from '@/utils/toast';
+import { toastError, toastWarning } from '@/utils/toast';
 import { getErrorMessage } from '@/types';
 import type { DegreeType } from '@/types';
 import './ApplicantUploadModal.css';

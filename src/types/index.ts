@@ -2,22 +2,22 @@
  * TypeScript types for the PGR Matching System
  */
 
-export type { ApiError } from './errors';
-export { isApiError, getErrorMessage } from './errors';
+export type { ApiError } from "./errors";
+export { isApiError, getErrorMessage } from "./errors";
 
-export type DegreeType = 'PHD' | 'MRES';
+export type DegreeType = "PHD" | "MRES";
 
-export type ApplicantStatus = 
-  | 'NEW'
-  | 'UNDER_REVIEW'
-  | 'SUPERVISOR_CONTACTED'
-  | 'ACCEPTED'
-  | 'REJECTED'
-  | 'ON_HOLD';
+export type ApplicantStatus =
+  | "NEW"
+  | "UNDER_REVIEW"
+  | "SUPERVISOR_CONTACTED"
+  | "ACCEPTED"
+  | "REJECTED"
+  | "ON_HOLD";
 
-export type AllocationRole = 'DOS' | 'CO_SUPERVISOR' | 'ADVISOR';
+export type AllocationRole = "DOS" | "CO_SUPERVISOR" | "ADVISOR";
 
-export type UserRole = 'ADMIN' | 'PGR_LEAD' | 'STAFF' | 'VIEW_ONLY' | 'SMT';
+export type UserRole = "ADMIN" | "PGR_LEAD" | "STAFF" | "VIEW_ONLY" | "SMT";
 
 export interface User {
   id: string;
@@ -88,7 +88,7 @@ export interface ApplicantDegree {
 }
 
 export interface ApplicantProfile {
-  date_of_birth?: string;  // ISO date string
+  date_of_birth?: string; // ISO date string
   nationality?: string;
   country_of_residence?: string;
   phone_number?: string;
@@ -110,9 +110,9 @@ export interface Applicant {
   primary_theme?: string;
   secondary_theme?: string;
   status: ApplicantStatus;
-  priority_score?: number;  // Quality score 0-100
-  ai_detection_probability?: number;  // AI detection likelihood 0-100
-  quality_rationale?: string;  // Explanation for quality and AI detection scores
+  priority_score?: number; // Quality score 0-100
+  ai_detection_probability?: number; // AI detection likelihood 0-100
+  quality_rationale?: string; // Explanation for quality and AI detection scores
   embedding?: number[];
   created_at: string;
   updated_at: string;
@@ -169,9 +169,9 @@ export interface MatchResponse {
   methods?: string;
   keywords: string[];
   match_score: number;
-  capacity_status: 'AVAILABLE' | 'FULL' | 'OVER_CAPACITY' | 'NO_CAPACITY_SET';
+  capacity_status: "AVAILABLE" | "FULL" | "OVER_CAPACITY" | "NO_CAPACITY_SET";
   explanation: string;
-  role_suggestion: 'DOS' | 'CO_SUPERVISOR';
+  role_suggestion: "DOS" | "CO_SUPERVISOR";
 }
 
 export interface Allocation {
@@ -184,8 +184,8 @@ export interface Allocation {
   applicant_intake_year?: number;
   applicant_intake_term?: string;
   applicant_status?: ApplicantStatus;
-  applicant_priority_score?: number;  // Quality score 0-100
-  applicant_ai_detection_probability?: number;  // AI detection likelihood 0-100
+  applicant_priority_score?: number; // Quality score 0-100
+  applicant_ai_detection_probability?: number; // AI detection likelihood 0-100
   staff_name?: string;
   staff_email?: string;
   staff_school?: string;
@@ -266,7 +266,12 @@ export interface AllocationNoteUpdate {
   author_user_id: string;
 }
 
-export type DocumentType = 'PROPOSAL' | 'CV' | 'APPLICATION_FORM' | 'TRANSCRIPT' | 'OTHER';
+export type DocumentType =
+  | "PROPOSAL"
+  | "CV"
+  | "APPLICATION_FORM"
+  | "TRANSCRIPT"
+  | "OTHER";
 
 export interface ApplicantDocument {
   id: string;
